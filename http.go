@@ -165,7 +165,7 @@ func HttpServe() {
 				"</style>", body+
 				"</tbody>\n"+
 				"</table>\n"+
-				"<p class=\"comment\">Github: <a href=\"https://github.com/cbytensky/katnip\">https://github.com/cbytensky/katnip</a></p>\n")))
+				"<p class=\"comment\">Github: <a href=\"https://github.com/D-Stacks/katnip\">https://github.com/D-Stacks/katnip</a></p>\n")))
 	})
 	http.HandleFunc("/bs/", func(w http.ResponseWriter, r *http.Request) {
 		Log(LogInf, "Get: " + r.URL.Path)
