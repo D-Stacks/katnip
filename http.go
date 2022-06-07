@@ -56,7 +56,7 @@ func HttpServe() {
 			"</pre></body></html>"
 		} else {
 			html = "<html><head><meta name=\"color-scheme\" content=\"light dark\"></head><body><pre style=\"word-wrap: break-word; white-space: pre-wrap;\">" +
-			fmt.Sprintf("%f", dagInfo.Difficulty) +
+			fmt.Sprintf("%f", dagInfo.Difficulty * 2) +
 			"</pre></body></html>"
 		}
 		w.Write([]byte(html))
