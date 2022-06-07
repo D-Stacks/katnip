@@ -47,6 +47,20 @@ func HttpServe() {
 		}
 		w.Write([]byte(html))
 	})
+	http.HandleFunc("/hashrate", func(w http.ResponseWriter, r *http.Request) {
+		var html string
+		dagInfo, err := RpcClient.GetBlockDAGInfo()
+		if err != nil {
+			html = "<html><head><meta name=\"color-scheme\" content=\"light dark\"></head><body><pre style=\"word-wrap: break-word; white-space: pre-wrap;\">" +
+			"Not Found" +
+			"</pre></body></html>"
+		} else {
+			html = "<html><head><meta name=\"color-scheme\" content=\"light dark\"></head><body><pre style=\"word-wrap: break-word; white-space: pre-wrap;\">" +
+			fmt.Sprintf("%f", dagInfo.Difficulty) +
+			"</pre></body></html>"
+		}
+		w.Write([]byte(html))
+	})
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		Log(LogInf, "Get: " + r.URL.Path)
 		NotFound := ""
