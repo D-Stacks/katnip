@@ -37,13 +37,9 @@ func HttpServe() {
 		var html string
 		supply, err := RpcClient.GetCoinSupply()
 		if err != nil {
-			html = "<html><head><meta name=\"color-scheme\" content=\"light dark\"></head><body><pre style=\"word-wrap: break-word; white-space: pre-wrap;\">" +
-			"Not Found" +
-			"</pre></body></html>"
+			html = "Not Found"
 		} else {
-			html = "<html><head><meta name=\"color-scheme\" content=\"light dark\"></head><body><pre style=\"word-wrap: break-word; white-space: pre-wrap;\">" +
-			fmt.Sprintf("%d", uint64(supply.CirculatingSompi)/constants.SompiPerKaspa) +
-			"</pre></body></html>"
+			html = fmt.Sprintf("%d", uint64(supply.CirculatingSompi)/constants.SompiPerKaspa)
 		}
 		w.Write([]byte(html))
 	})
@@ -51,13 +47,9 @@ func HttpServe() {
 		var html string
 		dagInfo, err := RpcClient.GetBlockDAGInfo()
 		if err != nil {
-			html = "<html><head><meta name=\"color-scheme\" content=\"light dark\"></head><body><pre style=\"word-wrap: break-word; white-space: pre-wrap;\">" +
-			"Not Found" +
-			"</pre></body></html>"
+			html = "Not Found"
 		} else {
-			html = "<html><head><meta name=\"color-scheme\" content=\"light dark\"></head><body><pre style=\"word-wrap: break-word; white-space: pre-wrap;\">" +
-			fmt.Sprintf("%f", dagInfo.Difficulty * 2) +
-			"</pre></body></html>"
+			html = fmt.Sprintf("%f", dagInfo.Difficulty * 2)
 		}
 		w.Write([]byte(html))
 	})
